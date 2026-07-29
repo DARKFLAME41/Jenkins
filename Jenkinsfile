@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/DARKFLAME41/Jenkins.git'
+                    url: 'https://github.com/DARKFLAME41/Jenkins'
             }
         }
 
