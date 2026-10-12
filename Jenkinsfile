@@ -9,15 +9,20 @@ pipeline {
             }
         }
 
-        stage('Compile') {
+        stage('Install Backend') {
             steps {
-                bat 'javac Addition.java'
+                dir('backend') {
+                    bat 'npm install'
+                }
             }
         }
 
-        stage('Execute') {
+        stage('Build Frontend') {
             steps {
-                bat 'java Addition'
+                dir('frontend') {
+                    bat 'npm install'
+                    bat 'npm run build'
+                }
             }
         }
     }
@@ -30,7 +35,7 @@ pipeline {
         failure {
             echo 'Pipeline Execution FAILED!'
         }
-        always{
+        always {
             echo 'Pipeline Completed'
         }
     }
